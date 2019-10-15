@@ -9,8 +9,8 @@ int main()
 		int guess = 0;
 		int guess_total = 1;
 		int num;
-		int high_guess = 10;
-		int low_guess = 1;
+		int high_guess = 11;
+		int low_guess = 0;
 		
 		printf("This is a guess my number game. You will have 3 guesses.\n");
 		printf("Please enter a number for your friend to guess.\n");
@@ -22,7 +22,17 @@ int main()
 			
 			scanf("%d", &guess);
 			
-			if(guess_total == 4)
+			if(num == guess)
+			{
+				printf("Congrats you won! Want to play again? Y:1/N:0?\n");
+				scanf("%d", &restart);
+				if(restart == 0);
+				{
+					return 0;
+				}
+				
+			}
+			else if(guess_total == 4)
 			{
 				printf("You ran out of guesses!!! The number to guess was %d.\n", num);
 				printf("Want to play again? Y:1/N:0?\n");
@@ -37,7 +47,7 @@ int main()
 				low_guess = guess;
 				printf("%d is too low.\n", guess);
 				printf("You have guessed %d time('s) you have %d left/n", guess_total, (3 - guess_total));
-				printf("Guess from %d to %d\n", low_guess, high_guess);
+				printf("Guess from %d to %d\n", (low_guess + 1), (high_guess - 1));
 				guess_total ++;
 			}
 			else if (guess > num)
@@ -45,18 +55,8 @@ int main()
 				high_guess = guess;
 				printf("%d is too high\n", guess);
 				printf("You have guessed %d time('s) you have %d left\n", guess_total, (3 - guess_total));
-				printf("Guess from %d to %d\n", low_guess, high_guess);
+				printf("Guess from %d to %d\n", (low_guess + 1), (high_guess - 1));
 				guess_total ++;
-			}
-			else if(num == guess)
-			{
-				printf("Congrats you won! Want to play again? Y:1/N:0?\n");
-				scanf("%d", &restart);
-				if(restart == 0);
-				{
-					return 0;
-				}
-				
 			}
 		}
 		
